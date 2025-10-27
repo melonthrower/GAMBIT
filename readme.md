@@ -6,7 +6,7 @@ This repository contains the official dataset and evaluation code for GAMBIT.
 > Yuqing Zhang, Honghui Sheng, Shengyu Zhang, Fei Wu
 
 ## 🧭 Release
-- [2025/10/26] 🤗 GAMBIT dataset available on HuggingFace.
+- [2025/10/26] 🤗[huggingface repo](https://huggingface.co/datasets/melonthrower12138/GAMBIT)GAMBIT dataset available on HuggingFace.
 - [2025/10/24] 🎉[Github repo]([https://github.com/zijianchen98/OBI-Bench](https://github.com/3190100830/GAMBIT)) for **GAMBIT** is online.
 
 ## 💡 Introduction
