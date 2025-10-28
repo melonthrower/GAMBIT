@@ -3,11 +3,11 @@
 This repository contains the official dataset and evaluation code for GAMBIT.
 
 > [GAMBIT: A Graph-structured and Decision-Aware Benchmark for MoBile GUI Tasks](https://openreview.net/pdf?id=MDxLNScqiK)  
-> Yuqing Zhang, Honghui Sheng, Shengyu Zhang, Fei Wu
+> Anonymous Authors
 
 ## 🧭 Release
 - [2025/10/26] 🤗 GAMBIT dataset available on [HuggingFace](https://huggingface.co/datasets/melonthrower12138/GAMBIT).
-- [2025/10/24] 🎉 [Github repo]([https://github.com/zijianchen98/OBI-Bench](https://github.com/3190100830/GAMBIT)) for **GAMBIT** is online.
+- [2025/10/24] 🎉 [Github repo](https://github.com/melonthrower/GAMBIT/tree/master) for **GAMBIT** is online.
 
 ## 💡 Introduction
 GAMBIT is a benchmark designed to evaluate mobile GUI agents on long-horizon planning and complex decision-making tasks. While existing benchmarks for mobile GUI agents primarily focus on short, linear workflows, they offer limited insight into an agent's capabilities for conditional reasoning and long-term planning. GAMBIT addresses this gap by introducing graph-structured, decision-aware tasks that systematically evaluate and advance the capabilities of modern agents in realistic scenarios.
