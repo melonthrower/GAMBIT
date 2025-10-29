@@ -3,10 +3,9 @@
 Except for infigui-r1, our evaluation scripts are largely based on the evaluation scripts in the official AgentCPM repository. Please refer to the [corresponding repository](https://github.com/OpenBMB/AgentCPM-GUI/tree/main/eval) for more details.
 
 # Data prepare
-对于除了infigui-r1以外的模型，我们的数据预处理遵循以下流程
-Download [GAMBIT](https://huggingface.co/datasets/melonthrower12138/GAMBIT) here, then save and unzip it at eval/eval_data/tmp/GAMBIT中
-依次在eval/eval_data/tmp/GAMBIT/data中运行t.py，在eval/eval_data中运行process_GAMBIT.py
-
+For models other than infigui-r1, our data preprocessing follows the following process:
+Download [GAMBIT](https://huggingface.co/datasets/melonthrower12138/GAMBIT) here, then save and unzip it in eval/eval_data/tmp/GAMBIT.
+Run t.py in eval/eval_data/t
 
 # Inference
 ## AgentCPM-GUI-8B
@@ -60,9 +59,6 @@ analyze_atomic_goal_progress.py: Calculates the Weighted Longest Common Subseque
 analyze_branch_accuracy.py: Calculates the branch frame accuracy.
 analyze_results_by_type.py: Calculates statistics based on the instruction type.
 ```
-
-
-
 
 calculate_metrics.py: The statistics script for infigui.
 
