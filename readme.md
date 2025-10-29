@@ -38,7 +38,7 @@ For more details on our data creation methodology, please refer to our [paper](h
 
 Our evaluations show that GAMBIT induces a substantial performance drop compared to prior benchmarks.
 ![main_results](assets/main_results.png)
-On complex 6–8 step tasks, success rates fall **below 5%**.
+
 ![Decision Accuracy Results](./assets/table_3_decision_accuracy.png)
 The average branch **decision accuracy** on Conditional and Hierarchical tasks is **only 38%**.
 
