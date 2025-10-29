@@ -7,7 +7,7 @@ from pathlib import Path
 
 current_file_path = os.path.abspath(__file__)
 current_dir = os.path.dirname(current_file_path)
-split_data_path = os.path.join(current_dir, 'tmp/GAMBIT/data/test_anno/random_split.json')
+split_data_path = os.path.join(current_dir, 'tmp/GAMBIT/test_anno/random_split.json')
 
 out_dir = Path(os.path.join(current_dir, 'GAMBIT/test/GAMBIT'))
 out_dir.mkdir(parents=True, exist_ok=True)
