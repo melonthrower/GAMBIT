@@ -1,0 +1,127 @@
+{
+  "type": "object",
+  "description": "执行操作并决定当前任务状态，对齐动作空间",
+  "additionalProperties": false,
+  "properties": {
+    "thought": {
+      "type": "string",
+      "description": "智能体的思考过程，可选"
+    },
+    "POINT": {
+      "$ref": "#/$defs/Location",
+      "description": "点击位置，用于 click、scroll、long_press"
+    },
+    "to": {
+      "description": "滑动方向或目标点（scroll 动作）",
+      "oneOf": [
+        {
+          "enum": ["up", "down", "left", "right"],
+          "description": "从 POINT 出发滑动的方向"
+        },
+        {
+          "$ref": "#/$defs/Location",
+          "description": "滑动到某个指定位置"
+        }
+      ]
+    },
+    "duration": {
+      "type": "integer",
+      "description": "长按或等待时间（毫秒），用于 long_press 和 wait",
+      "minimum": 0,
+      "default": 200
+    },
+    "PRESS": {
+      "type": "string",
+      "description": "系统按键，BACK = press_back，HOME = press_home",
+      "enum": ["BACK", "HOME"]
+    },
+    "TYPE": {
+      "type": "string",
+      "description": "文本输入（type）"
+    },
+    "STATUS": {
+      "type": "string",
+      "description": "任务状态标记，impossible / finish / continue",
+      "enum": ["continue", "finish", "impossible"],
+      "default": "continue"
+    }
+  },
+  "required": ["STATUS"],
+  "allOf": [
+    {
+      "if": {
+        "required": ["to"]
+      },
+      "then": {
+        "required": ["POINT"]
+      }
+    },
+    {
+      "if": {
+        "anyOf": [
+          { "not": { "required": ["STATUS"] } },
+          { "properties": { "STATUS": { "enum": ["continue"] } } }
+        ]
+      },
+      "then": {
+        "anyOf": [
+          { "required": ["POINT"] },
+          { "required": ["PRESS"] },
+          { "required": ["TYPE"] },
+          { "required": ["duration"] }
+        ]
+      }
+    }
+  ],
+  "oneOf": [
+    {
+      "required": ["POINT"],
+      "not": {
+        "anyOf": [
+          { "required": ["PRESS"] },
+          { "required": ["TYPE"] }
+        ]
+      }
+    },
+    {
+      "required": ["PRESS"],
+      "not": {
+        "anyOf": [
+          { "required": ["POINT"] },
+          { "required": ["TYPE"] }
+        ]
+      }
+    },
+    {
+      "required": ["TYPE"],
+      "not": {
+        "anyOf": [
+          { "required": ["POINT"] },
+          { "required": ["PRESS"] }
+        ]
+      }
+    },
+    {
+      "not": {
+        "anyOf": [
+          { "required": ["POINT"] },
+          { "required": ["PRESS"] },
+          { "required": ["TYPE"] }
+        ]
+      }
+    }
+  ],
+  "$defs": {
+    "Location": {
+      "type": "array",
+      "description": "屏幕坐标，缩放到 [0, 1000]，格式为 [x, y]",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000
+      },
+      "minItems": 2,
+      "maxItems": 2
+    }
+  }
+}

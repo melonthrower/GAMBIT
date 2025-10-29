@@ -1,0 +1,61 @@
+{
+  "title": "Strict Mobile UI Action with Thought",
+  "description": "描述一个要在移动设备上执行的、具体的UI操作。必须包含思考过程(thought)和有且仅有一个的核心动作。",
+  "type": "object",
+  "additionalProperties": false,
+
+  "properties": {
+    "thought": {
+      "type": "string",
+      "description": "智能体的思考过程。必须提供，用于解释为什么选择当前动作。"
+    },
+    "click": {
+      "$ref": "#/$defs/Location",
+      "description": "点击屏幕上的指定位置 [x, y]"
+    },
+    "scroll": {
+      "enum": ["up", "down", "left", "right"],
+      "description": "向某个方向全屏滑动"
+    },
+    "type": {
+      "type": "string",
+      "description": "在当前焦点处输入文本"
+    },
+    "press": {
+      "enum": ["BACK", "HOME"],
+      "description": "按系统键：返回或主页"
+    },
+    "wait": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "等待指定的毫秒数"
+    },
+    "status": {
+      "enum": ["complete", "impossible"],
+      "description": "标记任务的最终状态：成功完成或无法完成"
+    }
+  },
+
+  "required": [
+    "thought"
+  ],
+
+  "oneOf": [
+    { "required": ["click"] },
+    { "required": ["scroll"] },
+    { "required": ["type"] },
+    { "required": ["press"] },
+    { "required": ["wait"] },
+    { "required": ["status"] }
+  ],
+
+  "$defs": {
+    "Location": {
+      "type": "array",
+      "description": "归一化的屏幕坐标 [x, y]，范围 0-1000",
+      "items": { "type": "integer", "minimum": 0, "maximum": 1000 },
+      "minItems": 2,
+      "maxItems": 2
+    }
+  }
+}
