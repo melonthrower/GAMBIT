@@ -2,10 +2,15 @@
 
 Except for infigui-r1, our evaluation scripts are largely based on the evaluation scripts in the official AgentCPM repository. Please refer to the [corresponding repository](https://github.com/OpenBMB/AgentCPM-GUI/tree/main/eval) for more details.
 
-# Data prepare
-For models other than infigui-r1, our data preprocessing follows the following process:
-Download [GAMBIT](https://huggingface.co/datasets/melonthrower12138/GAMBIT) here, then save and unzip it in eval/eval_data/tmp/GAMBIT.
-Run t.py in eval/eval_data/t
+# Data preparation
+For models other than infigui-R1, our data preprocessing follows the following process:
+Download [GAMBIT](https://huggingface.co/datasets/melonthrower12138/GAMBIT) here, then save and unzip it in eval_data/tmp/GAMBIT.
+Run preprocess.py in eval_data/tmp/GAMBIT then preprocess_GAMBIT.py in eval_data
+
+For infigui-R1, after downloading the GAMBIT dataset, use the following command to generate the processed data.
+```
+python format_convert_GAMBIT2ac.py
+```
 
 # Inference
 ## AgentCPM-GUI-8B
@@ -39,7 +44,7 @@ We modified the script in the official repository used for evaluating Android co
 ```
 ## Set 'eval_type' to 'low' or 'high' in the command to determine whether to use low_instruction.
 ## thinking
-python android_control.py --eval_type low --thinking --output_dir ./eval_result/{output_file_name}
+python android_control.py --model_path {model_path} --eval_type low --thinking --output_dir ./eval_result/{output_file_name} 
 ## no-thinking
 python android_control.py --eval_type low --output_dir ./eval_result/{output_file_name}
 ```
